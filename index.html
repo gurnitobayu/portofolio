@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Jordan Lee | Portfolio Kreatif</title>
+    <title>Abdillah Gurnito Bayu Pamengku | Portfolio</title>
     <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- jsPDF untuk generate CV PDF asli -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -69,7 +67,6 @@
             position: sticky;
             top: 0;
             backdrop-filter: blur(12px);
-            background: rgba(var(--bg-primary-rgb), 0.8);
             background: var(--bg-primary);
             border-bottom: 1px solid var(--border-light);
             padding: 1rem 0;
@@ -86,7 +83,7 @@
             flex-wrap: wrap;
         }
         .logo {
-            font-size: 1.7rem;
+            font-size: 1.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #4f46e5, #818cf8);
             -webkit-background-clip: text;
@@ -175,7 +172,7 @@
             margin-bottom: 1rem;
         }
         .hero-content h1 {
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 800;
             line-height: 1.2;
             margin: 0.5rem 0 1rem;
@@ -187,10 +184,11 @@
             color: transparent;
         }
         .hero-desc {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            max-width: 500px;
+            max-width: 550px;
             margin: 1.2rem 0 2rem;
+            line-height: 1.6;
         }
         .hero-buttons {
             display: flex;
@@ -202,8 +200,8 @@
             text-align: center;
         }
         .avatar-circle {
-            width: 280px;
-            height: 280px;
+            width: 260px;
+            height: 260px;
             background: linear-gradient(145deg, #4f46e5, #a855f7);
             border-radius: 42% 58% 70% 30% / 44% 50% 50% 56%;
             display: flex;
@@ -213,7 +211,7 @@
             box-shadow: 0 20px 35px -12px rgba(79,70,229,0.4);
         }
         .avatar-circle i {
-            font-size: 7rem;
+            font-size: 6rem;
             color: white;
             filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
         }
@@ -224,9 +222,9 @@
             border-bottom: 1px solid var(--border-light);
         }
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             position: relative;
             display: inline-block;
         }
@@ -241,11 +239,21 @@
             border-radius: 4px;
         }
 
-        /* Skills */
+        /* Skills Grid */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
+            margin-top: 1rem;
+        }
+        .skill-category {
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
         }
         .skill-badge {
             background: var(--badge-bg);
@@ -253,9 +261,11 @@
             padding: 0.6rem 1.4rem;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: transform 0.2s, background 0.2s;
             box-shadow: var(--shadow-sm);
+            display: inline-block;
+            margin: 0.3rem;
         }
         .skill-badge:hover {
             transform: translateY(-3px);
@@ -263,69 +273,47 @@
             color: white;
         }
 
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+        /* Experience & Education */
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent);
         }
-        .project-card {
-            background: var(--bg-card);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s;
-            border: 1px solid var(--border-light);
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
         }
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
-        }
-        .project-img {
-            height: 180px;
-            background: linear-gradient(135deg, #1e1b4b, #312e81);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        .project-info {
-            padding: 1.5rem;
-        }
-        .project-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-        .tech {
-            background: var(--badge-bg);
-            color: var(--badge-text);
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
+        .timeline-subtitle {
             font-weight: 600;
-        }
-        .project-link {
             color: var(--accent);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: var(--badge-bg);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+        }
+        .timeline-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            padding-left: 0.5rem;
+        }
+        .timeline-desc ul {
+            padding-left: 1.2rem;
+            margin-top: 0.3rem;
+        }
+        .timeline-desc li {
+            margin-bottom: 0.3rem;
         }
 
-        /* About & Contact */
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            max-width: 800px;
-        }
+        /* Contact */
         .contact-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -402,7 +390,7 @@
                 text-align: center;
             }
             .hero-content h1 {
-                font-size: 2.4rem;
+                font-size: 2.2rem;
             }
             .hero-buttons {
                 justify-content: center;
@@ -412,7 +400,7 @@
                 height: 200px;
             }
             .avatar-circle i {
-                font-size: 5rem;
+                font-size: 4.5rem;
             }
             .nav-links {
                 gap: 1rem;
@@ -435,13 +423,14 @@
 <body>
     <nav class="navbar">
         <div class="container nav-content">
-            <div class="logo">JORDAN.dev</div>
+            <div class="logo">ABP | Portfolio</div>
             <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+                <a href="#home">Beranda</a>
+                <a href="#about">Tentang</a>
+                <a href="#experience">Pengalaman</a>
+                <a href="#skills">Keahlian</a>
+                <a href="#certificate">Sertifikasi</a>
+                <a href="#contact">Kontak</a>
                 <div class="theme-toggle" id="themeToggle">
                     <i class="fas fa-sun"></i> / <i class="fas fa-moon"></i>
                 </div>
@@ -454,17 +443,20 @@
         <section id="home" class="hero">
             <div class="container hero-grid">
                 <div class="hero-content">
-                    <span class="hero-badge"><i class="fas fa-code"></i> Full Stack & UI/UX</span>
-                    <h1>Halo, Saya <span class="highlight">Jordan Lee</span><br>Pencipta Digital</h1>
-                    <p class="hero-desc">Membangun pengalaman web yang cepat, intuitif, dan modern. Spesialis React, Node.js, dan desain antarmuka yang memikat.</p>
+                    <span class="hero-badge"><i class="fas fa-boxes"></i> Logistik & Operasional</span>
+                    <h1>Halo, Saya <span class="highlight">Abdillah Gurnito<br>Bayu Pamengku</span></h1>
+                    <p class="hero-desc">Lulusan S1 Bisnis Digital dengan pengalaman di bidang gudang, retail, dan operasional cargo. Terampil dalam manajemen inventaris, pelayanan pelanggan, serta menguasai Microsoft Office untuk mendukung aktivitas administrasi yang efisien.</p>
                     <div class="hero-buttons">
-                        <button class="btn btn-primary" id="downloadCvBtn"><i class="fas fa-download"></i> Download CV (PDF)</button>
+                        <!-- Tombol download menggunakan file dari folder -->
+                        <a href="CV ABDILLAH BAYU.pdf" class="btn btn-primary" id="downloadCvBtn" download="CV ABDILLAH BAYU.pdf">
+                            <i class="fas fa-download"></i> Download CV (PDF)
+                        </a>
                         <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Hubungi Saya</a>
                     </div>
                 </div>
                 <div class="avatar">
                     <div class="avatar-circle">
-                        <i class="fas fa-user-astronaut"></i>
+                        <i class="fas fa-user-graduate"></i>
                     </div>
                 </div>
             </div>
@@ -473,11 +465,73 @@
         <!-- About -->
         <section id="about">
             <div class="container">
-                <h2 class="section-title">Tentang Saya</h2>
-                <div class="about-text">
-                    <p>Saya Jordan Lee, seorang pengembang perangkat lunak dengan pengalaman 5+ tahun di industri teknologi. Memiliki passion dalam menciptakan solusi digital yang berdampak. Saya lulusan Teknik Informatika dari Institut Teknologi Bandung (ITB) dan telah mengerjakan berbagai proyek skala startup hingga enterprise.</p>
-                    <p style="margin-top: 1rem;">Saat ini saya fokus pada frontend modern dengan React/Next.js serta backend menggunakan Node.js dan cloud services. Saya percaya bahwa kode yang elegan dan pengalaman pengguna yang luar biasa adalah dua sisi mata uang yang sama.</p>
-                    <p style="margin-top: 1rem;"><i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Berbasis di Jakarta, Indonesia &nbsp;|&nbsp; <i class="fas fa-globe"></i> Remote & Freelance</p>
+                <h2 class="section-title">Profil Singkat</h2>
+                <div class="about-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); max-width: 900px;">
+                    <p>Saya adalah lulusan S1 Bisnis Digital yang memiliki pengalaman kerja sebagai Staff Gudang, Shopkeeper, serta pengalaman magang sebagai Staff Operasional di PT Dian Mega Kurnia Kargo. Terampil dalam mengelola logistik dan inventarisasi barang, serta memiliki kemampuan dalam memberikan pelayanan pelanggan yang memuaskan.</p>
+                    <p style="margin-top: 1rem;">Selain itu, saya juga menguasai Microsoft Office (Word, Excel, dan PowerPoint) untuk mendukung aktivitas operasional dan administrasi. Saya merupakan individu yang rajin, tangguh, dan memiliki kemauan belajar tinggi serta siap berkembang di lingkungan kerja yang dinamis.</p>
+                    <p style="margin-top: 1rem;"><i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Sedati, Sidoarjo, Jawa Timur &nbsp;|&nbsp; <i class="fas fa-globe"></i> Siap bekerja secara onsite maupun remote</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title">Pengalaman Kerja & Magang</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">Staff Gudang - Warehouse</div>
+                    <div class="timeline-subtitle">PT. Wahana Prestasi Logistik (Sidoarjo)</div>
+                    <span class="timeline-date">2022</span>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Menerima, mengecek, memilah, dan mengelompokkan paket sesuai prosedur.</li>
+                            <li>Memproses dokumen pengiriman dan memastikan keakuratan pengiriman sesuai instruksi.</li>
+                            <li>Menggunakan peralatan gudang dengan aman serta mengirim tepat waktu ke pelabuhan.</li>
+                            <li>Bekerja sama dalam tim dan mematuhi prosedur keamanan gudang.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Pegawai Pelayanan Konsumen - Retail</div>
+                    <div class="timeline-subtitle">Dandelions Parfume (Sidoarjo)</div>
+                    <span class="timeline-date">2022 - 2025</span>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Mengelola seluruh aspek penjualan parfum di toko, dari display hingga transaksi.</li>
+                            <li>Memberikan saran ahli dan pelayanan ramah untuk pengalaman belanja positif.</li>
+                            <li>Mengelola inventaris secara cermat sesuai permintaan pelanggan.</li>
+                            <li>Menjaga kebersihan & keteraturan toko, serta memastikan transaksi berjalan lancar.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Operasional Lapangan - Magang</div>
+                    <div class="timeline-subtitle">PT. Dian Mega Kurnia (Bandara Juanda, Surabaya)</div>
+                    <span class="timeline-date">2025</span>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Mengoperasikan sistem administrasi pengiriman dan penerimaan barang cargo.</li>
+                            <li>Membantu proses packing dan membantu proses pengecekan dokumen pengiriman.</li>
+                            <li>Melakukan penataan barang di area penyimpanan cargo agar memudahkan proses distribusi.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pendidikan -->
+        <section id="education" style="padding-top: 0;">
+            <div class="container">
+                <h2 class="section-title">Pendidikan</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">S1 Bisnis Digital</div>
+                    <div class="timeline-subtitle">Institut Teknologi Insan Cendekia Mandiri (Sidoarjo, Jawa Timur)</div>
+                    <span class="timeline-date">2022 - 2026</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">SMA / Sederajat</div>
+                    <div class="timeline-subtitle">Madrasah Aliyah Fadlillah (Sidoarjo, Jawa Timur)</div>
+                    <span class="timeline-date">2018 - 2021</span>
                 </div>
             </div>
         </section>
@@ -485,83 +539,48 @@
         <!-- Skills -->
         <section id="skills">
             <div class="container">
-                <h2 class="section-title">Keahlian & Teknologi</h2>
-                <div class="skills-grid">
-                    <span class="skill-badge">JavaScript (ES6+)</span>
-                    <span class="skill-badge">TypeScript</span>
-                    <span class="skill-badge">React.js</span>
-                    <span class="skill-badge">Next.js</span>
-                    <span class="skill-badge">Vue.js</span>
-                    <span class="skill-badge">Node.js</span>
-                    <span class="skill-badge">Express</span>
-                    <span class="skill-badge">Tailwind CSS</span>
-                    <span class="skill-badge">Figma</span>
-                    <span class="skill-badge">MongoDB / PostgreSQL</span>
-                    <span class="skill-badge">Git & Github</span>
-                    <span class="skill-badge">Python (Django)</span>
+                <h2 class="section-title">Keahlian</h2>
+                <div class="skill-category">
+                    <h3><i class="fas fa-warehouse"></i> Logistic & Warehouse Skill</h3>
+                    <div class="skills-grid">
+                        <span class="skill-badge">Manajemen Gudang</span>
+                        <span class="skill-badge">Operasional Gudang</span>
+                        <span class="skill-badge">Administrasi Gudang</span>
+                        <span class="skill-badge">Packing & Labeling</span>
+                        <span class="skill-badge">Inventarisasi Barang</span>
+                        <span class="skill-badge">Dokumen Pengiriman</span>
+                        <span class="skill-badge">Sortir & Pengelompokan</span>
+                        <span class="skill-badge">Customer Service Retail</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    <div class="skills-grid">
+                        <span class="skill-badge">Microsoft Word</span>
+                        <span class="skill-badge">Microsoft Excel (Pivot, Rumus)</span>
+                        <span class="skill-badge">Microsoft PowerPoint</span>
+                        <span class="skill-badge">Google Workspace</span>
+                        <span class="skill-badge">Sistem Administrasi Cargo</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects (data dummy lengkap) -->
-        <section id="projects">
+        <!-- Sertifikasi -->
+        <section id="certificate">
             <div class="container">
-                <h2 class="section-title">Proyek Unggulan</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-img"><i class="fas fa-cart-shopping fa-3x"></i></div>
-                        <div class="project-info">
-                            <h3>NexusMarket</h3>
-                            <p>Platform e-commerce modern dengan sistem rekomendasi AI & payment gateway. Memiliki dashboard analitik realtime.</p>
-                            <div class="project-tech">
-                                <span class="tech">React</span>
-                                <span class="tech">Node.js</span>
-                                <span class="tech">MongoDB</span>
-                                <span class="tech">Tailwind</span>
-                            </div>
-                            <a href="#" class="project-link">Demo <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-img"><i class="fas fa-chart-line fa-3x"></i></div>
-                        <div class="project-info">
-                            <h3>Insightlytics</h3>
-                            <p>Dashboard analitik untuk startup SaaS, visualisasi data interaktif dengan D3.js dan live update websocket.</p>
-                            <div class="project-tech">
-                                <span class="tech">Vue</span>
-                                <span class="tech">D3.js</span>
-                                <span class="tech">Express</span>
-                                <span class="tech">Socket.io</span>
-                            </div>
-                            <a href="#" class="project-link">Demo <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-img"><i class="fas fa-mobile-alt fa-3x"></i></div>
-                        <div class="project-info">
-                            <h3>TravelMate</h3>
-                            <p>Aplikasi mobile-first untuk perencana perjalanan, integrasi peta dan rekomendasi tempat wisata lokal.</p>
-                            <div class="project-tech">
-                                <span class="tech">React Native</span>
-                                <span class="tech">Firebase</span>
-                                <span class="tech">Google Maps API</span>
-                            </div>
-                            <a href="#" class="project-link">Demo <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-img"><i class="fas fa-palette fa-3x"></i></div>
-                        <div class="project-info">
-                            <h3>DesignSystem Kit</h3>
-                            <p>Library komponen UI dengan Storybook, mendukung dark/light mode dan aksesibilitas penuh (WCAG).</p>
-                            <div class="project-tech">
-                                <span class="tech">React</span>
-                                <span class="tech">Storybook</span>
-                                <span class="tech">CSS-in-JS</span>
-                            </div>
-                            <a href="#" class="project-link">Demo <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
+                <h2 class="section-title">Sertifikasi & Pelatihan</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">Pelatihan Microsoft Office</div>
+                    <div class="timeline-subtitle">Elips Academy (Sidoarjo)</div>
+                    <span class="timeline-date">2024</span>
+                    <div class="timeline-desc">Nomor Sertifikat: NO.EC / 024608 / MO / I / SDA / 2024</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Profesional Training Digital Marketing for Entry Level Class</div>
+                    <div class="timeline-subtitle">Chahra Event (Sidoarjo)</div>
+                    <span class="timeline-date">2024</span>
+                    <div class="timeline-desc">Nomor Sertifikat: 001/CLASS 040/PARTICIPANT/CHAHRA/I/2024</div>
                 </div>
             </div>
         </section>
@@ -587,21 +606,20 @@
                     </div>
                     <div class="contact-info">
                         <div class="contact-detail">
-                            <i class="fas fa-envelope"></i>
-                            <span>jordan.lee@portfolio.dev</span>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+62 856 - 4816 - 4670</span>
                         </div>
                         <div class="contact-detail">
-                            <i class="fas fa-phone-alt"></i>
-                            <span>+62 812 3456 7890</span>
+                            <i class="fas fa-envelope"></i>
+                            <span>abdillah.bayu25@gmail.com</span>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Jakarta, Indonesia</span>
+                            <span>Sedati, Sidoarjo, Jawa Timur</span>
                         </div>
                         <div class="social-icons">
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#" id="linkedinLink"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" id="portfolioLink"><i class="fas fa-briefcase"></i></a>
                             <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
@@ -611,7 +629,7 @@
     </main>
 
     <footer>
-        <p>© 2025 Jordan Lee — Built with <i class="fas fa-heart" style="color: #f43f5e;"></i> untuk pengalaman digital terbaik</p>
+        <p>© 2025 Abdillah Gurnito Bayu Pamengku — Built with <i class="fas fa-heart" style="color: #f43f5e;"></i> untuk portofolio profesional</p>
     </footer>
 
     <script>
@@ -623,7 +641,6 @@
         } else if (localStorage.getItem('theme') === 'light') {
             body.classList.remove('dark');
         } else {
-            // cek preferensi sistem
             if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 body.classList.add('dark');
                 localStorage.setItem('theme', 'dark');
@@ -636,7 +653,7 @@
             localStorage.setItem('theme', theme);
         });
 
-        // Smooth scroll untuk nav links (sudah pakai CSS scroll-behavior)
+        // Smooth scroll untuk nav links
         document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -647,7 +664,7 @@
             });
         });
 
-        // Contact form handler (alert dummy)
+        // Contact form handler
         const contactForm = document.getElementById('contactForm');
         if(contactForm) {
             contactForm.addEventListener('submit', (e) => {
@@ -657,141 +674,42 @@
                     alert("Mohon isi nama Anda.");
                     return;
                 }
-                alert(`Terima kasih ${name}, pesan Anda telah terkirim (demo). Saya akan segera merespon!`);
+                alert(`Terima kasih ${name}, pesan Anda telah terkirim. Saya akan segera merespon!`);
                 contactForm.reset();
             });
         }
 
-        // Fungsi Download CV menggunakan jsPDF (data dummy profesional)
-        async function generateCV_PDF() {
-            // Ambil dari library global jsPDF
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            // Data Dummy CV
-            const fullName = "Jordan Lee";
-            const jobTitle = "Full Stack Developer & UI Designer";
-            const email = "jordan.lee@portfolio.dev";
-            const phone = "+62 812 3456 7890";
-            const address = "Jakarta, Indonesia";
-            const about = "Full-stack developer dengan 5+ tahun pengalaman membangun aplikasi web skalabel. Berpengalaman memimpin tim frontend dan mengintegrasikan sistem backend yang kompleks. Memiliki ketertarikan besar pada arsitektur modern, performa, dan desain antarmuka yang inklusif.";
-            
-            // Pengalaman Kerja (dummy)
-            const experiences = [
-                { title: "Senior Frontend Engineer", company: "TechVista Inc.", period: "2022 - Sekarang", desc: "Mengembangkan design system dan komponen reusable dengan React & TypeScript. Meningkatkan performa web app hingga 40%." },
-                { title: "Full Stack Developer", company: "Digital Kreatif Studio", period: "2020 - 2022", desc: "Membangun REST API dengan Node.js/Express dan klien Vue.js. Integrasi database PostgreSQL serta deployment di AWS." },
-                { title: "UI/UX Freelance", company: "Self-employed", period: "2019 - 2020", desc: "Merancang dan mengembangkan website portofolio untuk berbagai klien, fokus pada user experience modern." }
-            ];
-            const education = "S.Kom, Teknik Informatika - Institut Teknologi Bandung (ITB), 2015-2019 (IPK 3.85/4.00)";
-            const skills = "JavaScript/TypeScript, React, Next.js, Node.js, Vue, Tailwind, MongoDB, Figma, Git, Agile Methodology";
-
-            // Mulai generate PDF
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(24);
-            doc.setTextColor(79, 70, 229);
-            doc.text(fullName, 20, 25);
-            doc.setFontSize(12);
-            doc.setTextColor(60, 60, 70);
-            doc.setFont("helvetica", "normal");
-            doc.text(jobTitle, 20, 35);
-            doc.setLineWidth(0.5);
-            doc.line(20, 40, 190, 40);
-            
-            // Kontak
-            doc.setFontSize(10);
-            doc.setTextColor(100, 100, 120);
-            doc.text(`📧 ${email}     📞 ${phone}     📍 ${address}`, 20, 50);
-            
-            // Tentang
-            doc.setFontSize(12);
-            doc.setFont("helvetica", "bold");
-            doc.setTextColor(40, 40, 50);
-            doc.text("TENTANG", 20, 65);
-            doc.setFont("helvetica", "normal");
-            doc.setFontSize(10);
-            const splitAbout = doc.splitTextToSize(about, 170);
-            doc.text(splitAbout, 20, 75);
-            
-            // Pengalaman
-            let yPos = 95;
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(12);
-            doc.text("PENGALAMAN KERJA", 20, yPos);
-            yPos += 8;
-            doc.setFont("helvetica", "normal");
-            doc.setFontSize(10);
-            for(let exp of experiences) {
-                doc.setFont("helvetica", "bold");
-                doc.text(`${exp.title} - ${exp.company}`, 20, yPos);
-                doc.setFont("helvetica", "italic");
-                doc.setTextColor(100,100,120);
-                doc.text(exp.period, 140, yPos, { align: "right" });
-                doc.setTextColor(40,40,50);
-                doc.setFont("helvetica", "normal");
-                const descSplit = doc.splitTextToSize(exp.desc, 165);
-                doc.text(descSplit, 20, yPos + 5);
-                yPos += 15 + (descSplit.length * 4);
-                if(yPos > 270) {
-                    doc.addPage();
-                    yPos = 20;
-                }
-            }
-            
-            // Pendidikan
-            if(yPos > 240) { doc.addPage(); yPos = 20; }
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(12);
-            doc.text("PENDIDIKAN", 20, yPos);
-            yPos += 7;
-            doc.setFont("helvetica", "normal");
-            doc.setFontSize(10);
-            doc.text(education, 20, yPos);
-            yPos += 10;
-            
-            // Skills
-            if(yPos > 260) { doc.addPage(); yPos = 20; }
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(12);
-            doc.text("KEMAMPUAN TEKNIS", 20, yPos);
-            yPos += 7;
-            doc.setFont("helvetica", "normal");
-            doc.setFontSize(10);
-            const skillLines = doc.splitTextToSize(skills, 170);
-            doc.text(skillLines, 20, yPos);
-            
-            // Footer
-            const pageCount = doc.internal.getNumberOfPages();
-            for(let i = 1; i <= pageCount; i++) {
-                doc.setPage(i);
-                doc.setFontSize(8);
-                doc.setTextColor(150,150,170);
-                doc.text(`CV - ${fullName} | Portfolio 2025`, 20, 285);
-            }
-            
-            // Simpan PDF
-            doc.save(`CV_Jordan_Lee.pdf`);
-        }
-
-        // Attach event ke tombol download CV
+        // Event listener untuk tombol download (sudah menggunakan tag <a> dengan atribut download)
+        // Tapi kita tambahkan fallback jika file tidak ditemukan
         const downloadBtn = document.getElementById('downloadCvBtn');
         if(downloadBtn) {
-            downloadBtn.addEventListener('click', (e) => {
+            <!-- Jika file bernama "CV ABDILLAH BAYU.pdf" -->
+<a href="CV ABDILLAH BAYU.pdf" class="btn btn-primary" download="CV ABDILLAH BAYU.pdf">
+    <i class="fas fa-download"></i> Download CV (PDF)
+</a>
+        }
+        
+        // Tautan linkedin & portfolio (placeholder)
+        const linkedinLink = document.getElementById('linkedinLink');
+        if(linkedinLink) {
+            linkedinLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                generateCV_PDF().catch(err => {
-                    console.error(err);
-                    alert("Terjadi kesalahan saat membuat CV, namun file tetap bisa dihasilkan. Silakan coba lagi.");
-                });
+                alert("LinkedIn saya: https://linkedin.com/in/abdillah-gurnito (dapat dihubungi via email)");
+            });
+        }
+        const portfolioLink = document.getElementById('portfolioLink');
+        if(portfolioLink) {
+            portfolioLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert("Portofolio lengkap dapat diakses melalui kontak email.");
             });
         }
 
-        // Efek hover pada skill badges (sudah di CSS)
-        // Tambahkan sedikit aksi pada link proyek (demo)
-        const projectLinks = document.querySelectorAll('.project-link');
-        projectLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert("🚀 Proyek demo interaktif tersedia di repositori GitHub. Silakan hubungi untuk akses penuh!");
-            });
+        // Menambahkan fallback jika file CV tidak ditemukan (opsional)
+        // Ini hanya untuk memberikan notifikasi yang lebih baik
+        const cvLink = document.getElementById('downloadCvBtn');
+        cvLink.addEventListener('error', function() {
+            alert("File CV belum tersedia di folder. Silakan hubungi admin untuk mendapatkan CV.");
         });
     </script>
 </body>
